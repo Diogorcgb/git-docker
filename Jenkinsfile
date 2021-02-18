@@ -3,7 +3,6 @@ node() {
     stage ("Build image") {
         // build our docker image
         myImg = docker.build 'my-image'
-               docker.image('my-image').withRun('-p 3300:3300') {
+        args '-d -p 80:80 /usr/sbin/apache2ctl -D FOREGROUND'
     }
-}
 }
