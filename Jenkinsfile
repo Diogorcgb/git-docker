@@ -1,6 +1,6 @@
 node {
     checkout scm
-    def testImage = docker.build("test-image", "./ Diogorcgb /git-docker ") 
+    def testImage = docker.build -t("test-image", "./ Diogorcgb /git-docker ") 
 
     testImage.inside {
         sh 'make test'
