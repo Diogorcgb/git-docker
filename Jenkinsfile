@@ -1,8 +1,8 @@
 pipeline {
   agent {
     dockerfile true
-     {
-         stages{
+  }
+        stages{
         stage('Docker build'){
             steps{
       image 'image'
@@ -13,5 +13,4 @@ pipeline {
         }
     }
 }
-}
-}
+
