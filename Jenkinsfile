@@ -1,8 +1,8 @@
-node() {
-    def myImg
-    stage ("Build image") {
-        // build our docker image
-        myImg = docker.build 'my-image'
-        args '-d -p 80:80 /usr/sbin/apache2ctl -D FOREGROUND'
+pipeline {
+  agent {
+    docker {
+      image 'image'
+      args '-d -p 3000:30000'
     }
+  }
 }
