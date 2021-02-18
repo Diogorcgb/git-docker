@@ -1,16 +1,8 @@
-pipeline {
-  agent {
-    dockerfile true
-  }
-        stages{
-        stage('Docker build'){
-            steps{
-      image 'image'
-      args '-d -p 3000:3000 -D image'
-
-            }
-
-        }
+node() {
+    def myImg
+    stage ("Build image") {
+        // build our docker image
+               docker.image('my-image').withRun('-p 3300:3300') {
     }
 }
-
+}
