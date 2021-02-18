@@ -1,16 +1,8 @@
-pipeline{
-    agent {
-        dockerfile true
-    }
-    stages {
-        stage('Docker build'){
-            steps{
-                echo 'Docker Build'
-                 def customImage = docker.build("my-image:${env.BUILD_ID}")
-                sh 'echo myCustomEnvVar = $myCustomEnvVar'
+node {
+    checkout scm
+    def testImage = docker.build("test-image", "./dockerfiles/test") 
 
-            }
-
-        }
+    testImage.inside {
+        sh 'make test'
     }
 }
