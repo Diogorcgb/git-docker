@@ -1,10 +1,7 @@
-node {
-    checkout scm
-
-            def customImage = docker.build("my-image")
-
-        /* Push the container to the custom Registry */
-        customImage.inside {
-        sh 'make test'
+node() {
+    def myImg
+    stage ("Build image") {
+        // build our docker image
+        myImg = docker.build 'my-image:snapshot'
     }
-    }
+}
