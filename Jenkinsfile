@@ -6,7 +6,7 @@ pipeline{
         stage('Docker build'){
             steps{
                 echo 'Docker Build'
-                docker build -t jenkins-docker
+                 def customImage = docker.build("my-image:${env.BUILD_ID}")
                 sh 'echo myCustomEnvVar = $myCustomEnvVar'
 
             }
